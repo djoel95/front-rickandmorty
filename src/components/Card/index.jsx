@@ -1,13 +1,15 @@
 import React from 'react';
-import style from '../Card/Card.module.css';
+import style from './styles.module.css';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { addFav, removeFav } from '../../redux/actions';
 import { useEffect } from 'react';
 
-const Card =  ({ name, status, species, gender, image, onClose, id, addFavorite, removeFavorite, myFavorites }) => {
+const Card = ({ name, status, species, gender, image, id, addFavorite, removeFavorite }) => {
   const [isFav, setIsFav] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
+
+  const { myFavorites } = useSelector((state) => state.character);
 
   const handleFavorite = () => {
     if (isFav) {
@@ -15,7 +17,7 @@ const Card =  ({ name, status, species, gender, image, onClose, id, addFavorite,
       removeFavorite(id.toString());
     } else {
       setIsFav(true);
-      addFavorite({ name, status, species, gender, image, id});
+      addFavorite({ name, status, species, gender, image, id });
     }
   };
 
@@ -27,6 +29,10 @@ const Card =  ({ name, status, species, gender, image, onClose, id, addFavorite,
       }
     }
   }, [myFavorites]);
+
+  const onClose = (id) => {
+
+  }
 
   return (
     <div

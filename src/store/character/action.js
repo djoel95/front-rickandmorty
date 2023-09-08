@@ -1,5 +1,7 @@
-import { ADD_FAVORITE, REMOVE_FAVORITE } from "./action-types";
+import { ADD_FAVORITE, GET_RANDOM_CHARACTER, REMOVE_FAVORITE } from "./action-types";
 import { FetchService, actionObject } from "../../utils";
+import axios from "axios";
+import { RICK_API_URL } from "../../utils/path";
 
 export const addFav = (character) => {
   return async (dispatch) => {
@@ -13,6 +15,38 @@ export const removeFav = (id) => {
     const response = await FetchService('fav/' + id, 'DELETE');
     return dispatch(actionObject(REMOVE_FAVORITE, response));
   };
+};
+
+
+export const getRandomCharacter = () => {
+  return async (dispatch, getStore) => {
+    try {
+      const { character: { characters } } = getStore()
+      const { data } = await axios(`${RICK_API_URL}character`);
+      const randomCharacter = data.results[Math.floor(Math.random() * data.results.length)];
+      if (
+        randomCharacter &&
+        !characters?.some((char) => char.id === randomCharacter.id)
+      ) dispatch(actionObject(GET_RANDOM_CHARACTER, [...characters || [], randomCharacter]));
+    } catch (error) {
+      console.log(error)
+      window.alert(error?.data || 'ha ocurrido un error')
+    }
+  }
+};
+
+export const onSearch = (id) => {
+  return async (dispatch, getStore) => {
+    const { character: { characters } } = getStore()
+    if (!id && isNaN(id)) window.alert("Ingrese un ID");
+    if (characters.some((chart) => chart.id === Number(id))) return window.alert("El personaje ya existe");
+    try {
+      const { data } = await axios(`${RICK_API_URL}character/${id}`);
+      if (data.name) dispatch(actionObject(GET_RANDOM_CHARACTER, [...characters || [], data]));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 };
 
 export const filterCards = (gender) => {
