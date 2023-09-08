@@ -1,22 +1,36 @@
-import { ADD_FAVORITE, GET_RANDOM_CHARACTER, REMOVE_FAVORITE } from "./action-types";
+import { GET_CHARACTER, GET_PAGINATE_CHARACTER, GET_RANDOM_CHARACTER, REMOVE_CHARACTER, TOOGLE_FAVORITE } from "./action-types";
 import { FetchService, actionObject } from "../../utils";
 import axios from "axios";
 import { RICK_API_URL } from "../../utils/path";
 
-export const addFav = (character) => {
-  return async (dispatch) => {
-    const response = await FetchService('fav', 'POST', character);
-    return dispatch(actionObject(ADD_FAVORITE, { allCharacters: response, myFavorites: response }));
+export const setToggleFavorite = (character) => {
+  return async (dispatch, getStore) => {
+    try {
+      const { character: { myFavorites } } = getStore()
+      if (!myFavorites.some((char) => char.id === String(character.id))) {
+        const response = await FetchService('fav', 'POST', { ...character, id: String(character.id) });
+        return dispatch(actionObject(TOOGLE_FAVORITE, response));
+      }
+      const response = await FetchService(`fav/${character.id}?id=` + character.id, 'DELETE');
+      return dispatch(actionObject(TOOGLE_FAVORITE, response));
+    } catch (error) {
+      window.alert(error?.data || 'ha ocurrido un error')
+    }
+
   };
 };
 
-export const removeFav = (id) => {
-  return async (dispatch) => {
-    const response = await FetchService('fav/' + id, 'DELETE');
-    return dispatch(actionObject(REMOVE_FAVORITE, response));
-  };
-};
-
+export const removeCharacter = (id) => {
+  return (dispatch, getStore) => {
+    const { character: { characters } } = getStore()
+    const newCaracters = [...characters]
+    const index = newCaracters?.findIndex((char) => char.id === Number(id));
+    if (index >= 0) {
+      newCaracters?.splice(index, 1)
+      return dispatch(actionObject(REMOVE_CHARACTER, newCaracters));
+    }
+  }
+}
 
 export const getRandomCharacter = () => {
   return async (dispatch, getStore) => {
@@ -35,6 +49,19 @@ export const getRandomCharacter = () => {
   }
 };
 
+export const getCharacter = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(`${RICK_API_URL}character/${id}`);
+      if (data.name) return dispatch(actionObject(GET_CHARACTER, data));
+      window.alert("No hay personajes con ese ID");
+    } catch (error) {
+      console.log(error)
+      window.alert(error?.data || 'ha ocurrido un error')
+    }
+  }
+}
+
 export const onSearch = (id) => {
   return async (dispatch, getStore) => {
     const { character: { characters } } = getStore()
@@ -45,9 +72,22 @@ export const onSearch = (id) => {
       if (data.name) dispatch(actionObject(GET_RANDOM_CHARACTER, [...characters || [], data]));
     } catch (error) {
       console.log(error);
+      window.alert(error?.data || 'ha ocurrido un error')
     }
   }
 };
+
+export const getPaginateCharacters = (page) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios(`${RICK_API_URL}character?page=${page}`);
+      return dispatch(actionObject(GET_PAGINATE_CHARACTER, response?.data));
+    } catch (error) {
+      console.log(error);
+      window.alert(error?.data || 'ha ocurrido un error')
+    }
+  }
+}
 
 export const filterCards = (gender) => {
   return async (dispatch, store) => {

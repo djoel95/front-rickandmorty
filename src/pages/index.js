@@ -1,3 +1,8 @@
 export { default as Login } from './Login'
 export { default as Home } from './Home'
 export { default as CharactersPage } from './CharactersPage'
+export { default as AboutPage } from './AboutPage'
+export { default as ContactPage } from './ContactPage'
+export { default as FavoritesPage } from './FavoritesPage'
+export { default as RegisterPage } from './RegisterPage'
+export { default as DetailPage } from './DetailPage'

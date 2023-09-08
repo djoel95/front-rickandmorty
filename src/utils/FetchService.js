@@ -13,7 +13,7 @@ const FetchService = async (url, method = "GET", variables = null) => {
       method,
     }
 
-    if (variables) data.variables = variables
+    if (variables) data.data = variables
 
     const response = await axios(`${URL}${url}`, data);
 

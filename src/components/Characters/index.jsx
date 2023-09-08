@@ -1,38 +1,29 @@
 import React, { useState, useEffect } from "react";
-import TablaPaginacion from "../TablaPaginacion/TablaPaginacion";
+import TablaPaginacion from "../TablaPaginacion";
 import style from "./styles.module.css";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getPaginateCharacters } from "../../store/actions";
 
 const Characters = () => {
-  const [characters, setCharacters] = useState([]);
-  const [totalPages, setTotalPages] = useState(0);
+
+  const { paginateCharacters } = useSelector((state) => state.character)
+  const dispatch = useDispatch()
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchCharacters = async () => {
-      try {
-        const response = await axios.get(
-          `https://rickandmortyapi.com/api/character?page=${currentPage}`
-        );
-        setCharacters(response.data.results);
-        setTotalPages(response.data.info.pages);
-      } catch (error) {
-        console.error("Error al obtener los personajes:", error);
-      }
-    };
-
-    fetchCharacters();
+    dispatch(getPaginateCharacters(currentPage));
   }, [currentPage]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-
+  
   return (
     <div className={style.cardsContainer}>
       <div className={style.table}>
         <TablaPaginacion
-          totalPages={totalPages}
+          totalPages={paginateCharacters?.info?.pages || 0}
           onPageChange={handlePageChange}
           currentPage={currentPage}
         />
@@ -49,7 +40,7 @@ const Characters = () => {
           </tr>
         </thead>
         <tbody>
-          {characters.map((character) => (
+          {paginateCharacters?.results?.map((character) => (
             <tr key={character.id}>
               <th scope="row">{character.id}</th>
               <td>{character.name}</td>

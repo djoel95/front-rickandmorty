@@ -2,3 +2,8 @@ export { default as Nav } from './Nav';
 export { default as FormLogin } from './FormLogin'
 export { default as Cards } from './Cards'
 export { default as Characters } from './Characters'
+export { default as About } from './About'
+export { default as Contact } from './Contact'
+export { default as Favorites } from './Favorites'
+export { default as Detail } from './Detail'
+export { default as Register } from './Register'

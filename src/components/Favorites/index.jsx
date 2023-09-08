@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { connect, useDispatch } from "react-redux";
-import Card from "../Card/Card";
-import { removeFav, orderCards, filterCards } from "../../redux/actions";
-import styles from "./Favorites.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import Card from "../Card";
+import styles from "./styles.module.css";
+import { filterCards, orderCards } from "../../store/actions";
 
-const Favorites = ({ myFavorites, removeFavorite }) => {
+const Favorites = () => {
   const [aux, setAux] = useState(false);
+  const { myFavorites } = useSelector((state) => state.character);
   const dispatch = useDispatch();
 
-  const handleFavorite = (id, removeFavorite) => {
-    removeFavorite(id);
-  };
   const handleOrder = (e) => {
     dispatch(orderCards(e.target.value));
     setAux(!aux);
@@ -38,6 +36,7 @@ const Favorites = ({ myFavorites, removeFavorite }) => {
       <div className={styles.cardsContainer}>
         {myFavorites.map((favorite) => (
           <Card
+            favorite={true}
             key={favorite.id}
             name={favorite.name}
             status={favorite.status}
@@ -45,8 +44,8 @@ const Favorites = ({ myFavorites, removeFavorite }) => {
             gender={favorite.gender}
             image={favorite.image}
             id={favorite.id}
-            onClose={() => handleFavorite(favorite.id, removeFavorite)}
             className={styles.card}
+            character={favorite}
           />
         ))}
       </div>
@@ -54,17 +53,5 @@ const Favorites = ({ myFavorites, removeFavorite }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    myFavorites: state.myFavorites,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    removeFavorite: (id) => dispatch(removeFav(id)),
-    orderCards: (order) => dispatch(orderCards(order)),
-    filterCards: (gender) => dispatch(filterCards(gender)),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+export default Favorites;

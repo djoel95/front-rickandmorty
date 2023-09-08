@@ -9,6 +9,7 @@ const Cards = () => {
     <div className={style.cardsContainer}>
       {characters.map((character) => (
         <Card
+          character={character}
           key={character.id}
           id={character.id}
           name={character.name}

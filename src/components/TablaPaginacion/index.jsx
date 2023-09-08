@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './TablaPaginacion..module.css';
+import styles from './styles.module.css';
 const TablaPaginacion = ({ totalPages, onPageChange, currentPage }) => {
   const handlePageChange = (page) => {
     onPageChange(page);

@@ -1,4 +1,4 @@
-import style from "./About.module.css";
+import style from "./styles.module.css";
 import video from "../../assets/gen2.mp4";
 import video2 from "../../assets/dark.mp4";
 import video3 from "../../assets/white.mp4";
