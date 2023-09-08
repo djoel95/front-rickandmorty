@@ -1,4 +1,4 @@
-const validateForm = (userData) => {
+export const validateForm = (userData) => {
   const errors = {};
   const usernameRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
   const expresionRegular = /^(?=.{1,35}$).+/;
@@ -18,6 +18,3 @@ const validateForm = (userData) => {
 
   return errors;
 };
-
-
-export default validateForm;

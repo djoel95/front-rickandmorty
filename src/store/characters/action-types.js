@@ -1,0 +1,4 @@
+export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+export const FILTER_CARDS = 'FILTER_CARDS';
+export const ORDER_CARDS = 'ORDER_CARDS';
