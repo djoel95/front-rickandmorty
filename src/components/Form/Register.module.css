@@ -1,0 +1,132 @@
+.containerForm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 7rem;
+  color: white;
+  background-color: transparent;
+  border-radius: 1rem;
+  margin: 0 auto;
+  height: auto;
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 600px;
+  width: 100%;
+
+}
+
+.containerLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 20px;
+  width: 280px;
+  height: 70px;
+
+}
+
+select {
+  border-radius: 20px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  font-size: 14px;
+  color: black;
+  width: 100%;
+  display: flex;
+  border: 1px solid #0fff00;
+  background-color:  #28ff195e;
+  color: white;
+  
+}
+
+.label {
+}
+
+.error {
+  display: flex;
+  color: red;
+  justify-content: flex-start;
+}
+.button {
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid #0fff00;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 1rem 1rem;
+  text-decoration: none;
+  justify-content: center;
+}
+
+
+.button:hover {
+  cursor: pointer;
+  color: #0fff00;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button.ghost {
+  background-color: transparent;
+  border-color: white;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.video {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: -1;
+}
+
+.icon {
+  position: flex;
+  width: 10rem;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 10rem;
+
+  cursor: pointer;
+  align-items: flex-end;
+}
+
+.input-error {
+  color: red;
+}

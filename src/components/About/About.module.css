@@ -1,0 +1,72 @@
+.aboutContainerForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.aboutContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 7rem;
+  color: black;
+  border-radius: 1rem;
+  margin: auto;
+  height: 100%;
+  padding: 2rem;
+  background: linear-gradient(
+    -45deg,
+    rgba(238, 119, 82, 0.85),
+    rgba(231, 60, 126, 0.85),
+    rgba(35, 166, 213, 0.85),
+    rgba(35, 213, 171, 0.85)
+  );
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 98%;
+  max-width: 1200px;
+  gap: 1rem;
+}
+
+.aboutContainerGroup {
+  display: grid;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+}
+
+.aboutContainerText {
+  display: flex;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: black;
+  font-family: "Source Code Pro", monospace;
+  text-align: justify;
+  width: 100%;
+  
+justify-content: center;
+}
+
+video {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-radius: 2rem;
+  
+}
+
+video:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 900px){
+  .aboutContainerGroup{
+    grid-template-columns: 1fr;
+  }
+}

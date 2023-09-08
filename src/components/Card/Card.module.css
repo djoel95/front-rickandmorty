@@ -1,0 +1,116 @@
+@import "transition-style";
+
+.cardStyle {
+  position: relative;
+  width: 220px;
+  margin: 0.1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  animation: 1s cubic-bezier(0.25, 1, 0.3, 1) animationCard both;
+  text-decoration: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transform-style: preserve-3d; /* Agrega esta propiedad */
+  perspective: 800px; /* Agrega esta propiedad */
+}
+@keyframes animationCard {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 50%);
+  }
+  to {
+    clip-path: polygon(-50% 0%, 200% 0, 0 200%, 0 -50%);
+  }
+}
+
+.cardStyle:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  opacity: 1;
+}
+.cardStyle > a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 auto;
+  color: black;
+  position: relative;
+  z-index: 1;
+  background-color: lightgoldenrodyellow;
+  width: 100%;
+;
+  cursor: pointer;
+  background: #000000;
+}
+
+.cardStyle > h2 {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 auto;
+  color: black;
+  z-index: 1;
+  background-color: #64fa59;
+  width: 100%;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  border-radius: 0rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  -webkit-border-radius: 0rem;
+  -moz-border-radius: 0rem;
+  -ms-border-radius: 0rem;
+  -o-border-radius: 0rem;
+}
+
+.btnCard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  border-radius: 25%;
+  background-color: rgba(0, 253, 97, 0.993);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btnCard:hover {
+  /* Add your styles here */
+  color: red;
+  border: none;
+
+  border: none;
+}
+
+.button:hover {
+  color: black;
+}
+
+.btnFav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 2;
+  border-radius: 25%;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #000000;
+}
