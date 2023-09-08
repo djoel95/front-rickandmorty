@@ -1,9 +1,10 @@
+import { useSelector } from "react-redux"
 import PublicRouter from "./PublicRouter"
+import PrivateRouter from "./PrivateRouter"
 
 const Routing = () => {
 
-  return <PublicRouter />
-
+  const { isAuth } = useSelector((store) => store.auth)
+  return isAuth ? <PrivateRouter /> : <PublicRouter />
 }
-
 export default Routing

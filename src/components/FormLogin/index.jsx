@@ -5,13 +5,11 @@ import linkel from "../../assets/linkedin.png";
 import github from "../../assets/github.png";
 import { Link } from "react-router-dom";
 import { validateForm } from "../../utils";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginAuth } from "../../store/actions";
 
 
 const FormLogin = () => {
-
-  const { isAuth } = useSelector((store) => store.auth)
   const dispatch = useDispatch()
 
   const [userData, setUserData] = useState({
