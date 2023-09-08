@@ -1,9 +1,7 @@
-import { applyMiddleware, compose } from 'redux';
 import reducers from './reducers'
-import thunkMiddleware from 'redux-thunk';
 import { configureStore } from '@reduxjs/toolkit';
+import thunkMiddleware from 'redux-thunk';
 
-const composeEnhancer = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
-const store = configureStore(reducers, composeEnhancer(applyMiddleware(thunkMiddleware)));
+const store = configureStore({ reducer: reducers, middleware: (defaultMiddleware) => { return defaultMiddleware({ thunk: true }).concat(thunkMiddleware) }, devTools: process.env.NODE_ENV !== "production" });
 
 export default store;

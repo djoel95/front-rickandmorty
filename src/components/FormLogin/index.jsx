@@ -5,14 +5,20 @@ import linkel from "../../assets/linkedin.png";
 import github from "../../assets/github.png";
 import { Link } from "react-router-dom";
 import { validateForm } from "../../utils";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAuth } from "../../store/actions";
 
 
 const FormLogin = () => {
+
+  const { isAuth } = useSelector((store) => store.auth)
+  const dispatch = useDispatch()
 
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+
   const [errors, setErrors] = useState({});
   const [showRegisterForm, setShowRegisterForm] = useState(false);
 
@@ -24,6 +30,7 @@ const FormLogin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(loginAuth(userData));
   };
 
   const handleToggleRegisterForm = () => {
@@ -60,10 +67,10 @@ const FormLogin = () => {
             name="email"
             value={userData.email}
             onChange={handleChange}
-            className={errors.username ? style.inputError : ""}
+            className={errors.email ? style.inputError : ""}
           />
-          {errors.username && (
-            <span className={style.error}>{errors.username}</span>
+          {errors.email && (
+            <span className={style.error}>{errors.email}</span>
           )}
         </div>
         <div className={style.containerLabel}>
