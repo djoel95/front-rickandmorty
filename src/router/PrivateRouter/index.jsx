@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Nav } from "../../components";
-import Home from "../../pages/Home";
+import { CharactersPage, Home } from "../../pages";
 
 const PrivateRouter = () => {
   return (
@@ -8,6 +8,7 @@ const PrivateRouter = () => {
       <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path="/characters" element={<CharactersPage />} />
       </Routes>
     </>
   );

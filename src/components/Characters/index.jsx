@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TablaPaginacion from "../TablaPaginacion/TablaPaginacion";
-import style from "./Characters.module.css";
+import style from "./styles.module.css";
 import axios from "axios";
 
 const Characters = () => {
@@ -31,14 +31,14 @@ const Characters = () => {
   return (
     <div className={style.cardsContainer}>
       <div className={style.table}>
-      <TablaPaginacion
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        currentPage={currentPage}
+        <TablaPaginacion
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
         />
-        </div>
-   <table className={style.table}>
-    
+      </div>
+      <table className={style.table}>
+
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -56,13 +56,13 @@ const Characters = () => {
               <td>{character.status}</td>
               <td>{character.species}</td>
               <td>
-                <img src={character.image} alt={character.name} className={style.img} /> 
-                </td>
+                <img src={character.image} alt={character.name} className={style.img} />
+              </td>
             </tr>
           ))}
         </tbody>
       </table >
-      
+
     </div>
   );
 };

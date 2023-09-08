@@ -17,14 +17,14 @@ const Nav = () => {
           <Link to="/" onClick={() => dispatch(logoutAuth())}>
             <img className={styles.logo} src={icon} alt="" />
           </Link>
-          <Link to="/home">
+          <Link to="/">
             <img className={styles.logo2} src={logotipo} alt="" />
           </Link>
           <div className={styles.containerNavBtn}>
             <Link
-              to="/home"
+              to="/"
               className={
-                location.pathname === "/home" ? styles.btnActive : styles.btn
+                location.pathname === "/" ? styles.btnActive : styles.btn
               }>
               Home
             </Link>
