@@ -1,9 +1,13 @@
 import { Route, Routes } from "react-router-dom";
+import { Nav } from "../../components";
 
 const PrivateRouter = () => {
   return (
-    <Routes>
-    </Routes>
+    <>
+      <Nav />
+      <Routes>
+      </Routes>
+    </>
   );
 }
 

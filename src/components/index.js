@@ -1,2 +1,2 @@
-export { default as Navigation } from './Navigation';
+export { default as Nav } from './Nav';
 export { default as FormLogin } from './FormLogin'

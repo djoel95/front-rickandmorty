@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import style from './SearchBar.module.css';
+import style from './styles.module.css';
 
-export default function SearchBar(props) {
-  const { onSearch, onRandomCard } = props;
+export default function SearchBar() {
   const [id, setId] = useState('');
 
   const handleChange = (event) => {
@@ -23,7 +22,7 @@ export default function SearchBar(props) {
         placeholder='Type to Search...'
         className={style.input}
       />
-  
+
       <button className={style.button} onClick={() => onSearch(id)}>Add</button>
       <button className={style.button2} onClick={handleRandomCard}>Random</button>
     </div>

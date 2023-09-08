@@ -1,18 +1,20 @@
-import styles from "./Nav.module.css";
-import SearchBar from "../SearchBar/SearchBar.jsx";
+import styles from "./styles.module.css";
+import SearchBar from "../SearchBar";
 import { Link } from "react-router-dom";
 import icon from "../../assets/icon.png";
 import logotipo from "../../assets/logo2.gif";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutAuth } from "../../store/actions";
 
-const Nav = ({ onSearch, onRandomCard }) => {
+const Nav = () => {
   const location = useLocation();
-  console.log(location);
+  const dispatch = useDispatch()
   return (
     <div className={styles.containerNavHeader}>
       <nav className={styles.nav}>
         <div className={styles.containerNav}>
-          <Link to="/">
+          <Link to="/" onClick={() => dispatch(logoutAuth())}>
             <img className={styles.logo} src={icon} alt="" />
           </Link>
           <Link to="/home">
@@ -57,7 +59,7 @@ const Nav = ({ onSearch, onRandomCard }) => {
               Contact
             </Link>
             <div className={styles.navBar}>
-              <SearchBar onSearch={onSearch} onRandomCard={onRandomCard} />
+              <SearchBar />
             </div>
           </div>
         </div>

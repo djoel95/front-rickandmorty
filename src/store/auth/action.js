@@ -1,4 +1,5 @@
-import { FetchService } from "../../utils"
+import { FetchService, actionObject } from "../../utils"
+import { LOGIN_AUTH, LOGOUT_AUTH } from "./action-types";
 
 export const loginAuth = (data) => {
   return async (dispatch) => {
@@ -8,3 +9,5 @@ export const loginAuth = (data) => {
     return dispatch(actionObject(LOGIN_AUTH, response));
   }
 }
+
+export const logoutAuth = () => actionObject(LOGOUT_AUTH)
